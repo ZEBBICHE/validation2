@@ -1,0 +1,7 @@
+{
+  "name": "validation-methode-analytique",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plateforme de validation de methode analytique - Laboratoire Central de Biologie & Toxicologie, Hopital Ali Ait Idir, Alger",
+  "type": "module"
+}
