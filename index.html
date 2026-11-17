@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Validation de méthode analytique — Laboratoire Central EHS Ali Aït Idir</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0c2d5a">
+<meta name="description" content="Plateforme de validation des méthodes analytiques — Laboratoire Central de Biologie et de Toxicologie, Hôpital Ali Aït Idir, Alger.">
+<link rel="icon" href="/icone-192.png" type="image/png">
+<link rel="apple-touch-icon" href="/icone-apple-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Validation">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -191,6 +199,209 @@ nav.tabs{flex:1;padding:10px 0;}
 .ai-diag .ok{color:#8FE0B4;}
 .ai-diag .ko{color:#F3B0AC;}
 .ai-diag b{color:#fff;}
+
+/* ============================================================
+   ESPACE DE CONNEXION
+   ============================================================ */
+.gate{
+  position:fixed;inset:0;z-index:3000;
+  background:linear-gradient(150deg,#0C2D5A 0%,#173A5E 55%,#11263F 100%);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  font-family:'Inter',system-ui,sans-serif;
+}
+.gate.hidden{display:none;}
+.gate-card{
+  width:100%;max-width:400px;background:#fff;border-radius:14px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.38);padding:30px 30px 26px;
+}
+.gate-logo{display:block;width:84px;height:84px;margin:0 auto 14px;border-radius:50%;}
+.gate-card h2{
+  font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;
+  color:#173A5E;text-align:center;margin:0 0 4px;
+}
+.gate-sub{
+  font-size:11.5px;color:#5B6674;text-align:center;line-height:1.5;
+  margin:0 0 20px;padding-bottom:16px;border-bottom:1px solid #E6ECF3;
+}
+.gate-field{margin-bottom:13px;}
+.gate-field label{
+  display:block;font-size:10.5px;font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;color:#5B6674;margin-bottom:5px;
+}
+.gate-field input{
+  width:100%;box-sizing:border-box;padding:10px 12px;font-size:14px;
+  font-family:inherit;border:1px solid #CBD6E2;border-radius:7px;background:#FBFCFE;
+  transition:border-color .15s,box-shadow .15s;
+}
+.gate-field input:focus{
+  outline:none;border-color:#2C6CA6;background:#fff;
+  box-shadow:0 0 0 3px rgba(44,108,166,0.14);
+}
+.gate-btn{
+  width:100%;padding:11px;margin-top:7px;font-size:14px;font-weight:600;
+  font-family:inherit;color:#fff;background:#173A5E;border:none;border-radius:7px;
+  cursor:pointer;transition:background .15s;
+}
+.gate-btn:hover{background:#0C2D5A;}
+.gate-btn:disabled{background:#8798AB;cursor:progress;}
+.gate-msg{
+  font-size:12px;line-height:1.5;margin:14px 0 0;padding:10px 12px;
+  border-radius:7px;display:none;
+}
+.gate-msg.on{display:block;}
+.gate-msg.ko{background:#FDECEA;color:#9F2D22;border:1px solid #F3C9C4;}
+.gate-msg.ok{background:#EAF6EF;color:#1E6B41;border:1px solid #BEE3CE;}
+.gate-msg.info{background:#EEF4FA;color:#1F4A73;border:1px solid #CBDDEE;}
+.gate-foot{
+  margin-top:20px;padding-top:15px;border-top:1px solid #E6ECF3;
+  font-size:10.5px;color:#8798AB;text-align:center;line-height:1.6;
+}
+
+/* ============================================================
+   COMPTE ET ADMINISTRATION
+   ============================================================ */
+.account-box{
+  display:flex;align-items:center;gap:9px;padding:9px 10px;margin-bottom:12px;
+  background:rgba(255,255,255,0.07);border-radius:8px;
+}
+.account-ini{
+  width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:#2C6CA6;
+  color:#fff;font-size:11.5px;font-weight:700;display:flex;
+  align-items:center;justify-content:center;letter-spacing:0.02em;
+}
+.account-id{min-width:0;flex:1;}
+.account-nom{
+  font-size:12px;font-weight:600;color:#fff;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.account-role{font-size:10px;color:#9FB6CE;}
+.account-out{
+  background:none;border:none;color:#9FB6CE;cursor:pointer;padding:4px;
+  font-size:14px;line-height:1;border-radius:4px;
+}
+.account-out:hover{color:#fff;background:rgba(255,255,255,0.1);}
+
+.modal-back{
+  position:fixed;inset:0;z-index:2500;background:rgba(12,27,45,0.62);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:34px 18px;overflow-y:auto;
+}
+.modal-back.on{display:flex;}
+.modal-box{
+  width:100%;max-width:880px;background:#fff;border-radius:12px;
+  box-shadow:0 22px 56px rgba(0,0,0,0.3);overflow:hidden;
+  font-family:'Inter',system-ui,sans-serif;
+}
+.modal-head{
+  display:flex;align-items:center;gap:12px;padding:16px 22px;
+  background:#173A5E;color:#fff;
+}
+.modal-head h3{
+  margin:0;font-family:'Source Serif 4',Georgia,serif;
+  font-size:16px;font-weight:600;flex:1;
+}
+.modal-x{
+  background:none;border:none;color:#9FB6CE;font-size:20px;
+  cursor:pointer;line-height:1;padding:2px 6px;border-radius:4px;
+}
+.modal-x:hover{color:#fff;background:rgba(255,255,255,0.12);}
+.modal-tabs{display:flex;gap:2px;padding:0 22px;background:#0F2E4C;}
+.modal-tabs button{
+  background:none;border:none;color:#9FB6CE;font-family:inherit;
+  font-size:12px;font-weight:500;padding:10px 14px;cursor:pointer;
+  border-bottom:2px solid transparent;
+}
+.modal-tabs button.on{color:#fff;border-bottom-color:#6FB1E8;}
+.modal-body{padding:20px 22px 24px;max-height:68vh;overflow-y:auto;}
+.modal-body h4{
+  margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:#5B6674;
+}
+.modal-body h4:not(:first-child){margin-top:24px;}
+
+.adm-table{width:100%;border-collapse:collapse;font-size:12px;}
+.adm-table th{
+  text-align:left;font-size:10px;font-weight:700;letter-spacing:0.06em;
+  text-transform:uppercase;color:#5B6674;padding:7px 9px;
+  border-bottom:1.5px solid #D6E0EA;white-space:nowrap;
+}
+.adm-table td{padding:8px 9px;border-bottom:1px solid #EDF1F6;vertical-align:middle;color:#2A3542;}
+.adm-table tr:hover td{background:#F7FAFD;}
+.adm-table .mono{font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.adm-act{display:flex;gap:5px;flex-wrap:wrap;}
+.adm-act button{
+  font-family:inherit;font-size:10.5px;padding:3px 8px;cursor:pointer;
+  border:1px solid #CBD6E2;background:#fff;color:#2C6CA6;border-radius:5px;
+}
+.adm-act button:hover{background:#EEF4FA;border-color:#2C6CA6;}
+.adm-act button.danger{color:#9F2D22;}
+.adm-act button.danger:hover{background:#FDECEA;border-color:#D98A82;}
+.pill{
+  display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;
+  border-radius:10px;white-space:nowrap;
+}
+.pill.actif{background:#EAF6EF;color:#1E6B41;}
+.pill.inactif{background:#F2F4F7;color:#71808F;}
+.pill.admin{background:#F3EAFB;color:#653193;}
+.pill.valideur{background:#EAF2FB;color:#1F4A73;}
+.pill.redacteur{background:#EFF6EC;color:#3A6B2A;}
+.pill.lecteur{background:#F2F4F7;color:#5B6674;}
+
+.adm-form{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:11px;padding:16px;background:#F7FAFD;border:1px solid #E1E9F1;border-radius:9px;
+}
+.adm-form label{
+  display:block;font-size:10px;font-weight:600;letter-spacing:0.05em;
+  text-transform:uppercase;color:#5B6674;margin-bottom:4px;
+}
+.adm-form input,.adm-form select{
+  width:100%;box-sizing:border-box;padding:7px 9px;font-size:12.5px;
+  font-family:inherit;border:1px solid #CBD6E2;border-radius:6px;background:#fff;
+}
+.adm-form input:focus,.adm-form select:focus{outline:none;border-color:#2C6CA6;}
+.adm-form .full{grid-column:1/-1;}
+.adm-form .full button{
+  font-family:inherit;font-size:12.5px;font-weight:600;padding:8px 18px;
+  background:#173A5E;color:#fff;border:none;border-radius:6px;cursor:pointer;
+}
+.adm-form .full button:hover{background:#0C2D5A;}
+.adm-note{font-size:11.5px;line-height:1.6;color:#5B6674;margin:10px 0 0;}
+.adm-note b{color:#2A3542;}
+.adm-warn{
+  font-size:11.5px;line-height:1.6;padding:11px 13px;border-radius:7px;
+  background:#FFF6E6;color:#7A5410;border:1px solid #F0DCB0;margin:0 0 16px;
+}
+.adm-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.adm-stat{
+  flex:1 1 118px;padding:12px 14px;background:#F7FAFD;
+  border:1px solid #E1E9F1;border-radius:9px;
+}
+.adm-stat b{display:block;font-size:19px;color:#173A5E;font-weight:700;line-height:1.3;}
+.adm-stat span{font-size:10.5px;color:#5B6674;}
+.log-list{font-size:11.5px;}
+.log-row{
+  display:flex;gap:10px;padding:6px 2px;border-bottom:1px solid #EDF1F6;
+  align-items:baseline;
+}
+.log-when{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  color:#8798AB;flex:0 0 118px;
+}
+.log-who{font-weight:600;color:#2C6CA6;flex:0 0 100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.log-what{color:#2A3542;flex:1;}
+
+.proj-row .proj-meta{font-size:9.5px;color:#9FB6CE;display:block;margin-top:1px;}
+.proj-row.distant .proj-name::after{
+  content:'●';color:#6FB1E8;font-size:7px;vertical-align:middle;margin-left:5px;
+}
+.install-btn{
+  display:none;width:100%;margin-top:10px;padding:9px;font-family:inherit;
+  font-size:11.5px;font-weight:600;color:#fff;background:rgba(111,177,232,0.22);
+  border:1px solid rgba(111,177,232,0.45);border-radius:7px;cursor:pointer;
+}
+.install-btn:hover{background:rgba(111,177,232,0.34);}
+.install-btn.on{display:block;}
 .ai-note{width:100%;font-size:9px;color:#8FAAC7;line-height:1.5;margin:3px 0 0;}
 .ai-note a{color:#6FB1E8;}
 .sheet-current{
@@ -372,12 +583,23 @@ footer.note{margin-top:30px;font-size:12px;color:var(--ink-soft);line-height:1.6
       <h1>Validation de méthode analytique</h1>
     </div>
     <div class="project-wrap">
+      <div class="account-box" id="accountBox" style="display:none;">
+        <span class="account-ini" id="accountIni">—</span>
+        <span class="account-id">
+          <span class="account-nom" id="accountNom">—</span>
+          <span class="account-role" id="accountRole">—</span>
+        </span>
+        <button class="account-out" id="btnAdmin" title="Administration" onclick="ouvrirAdmin()" style="display:none;">⚙</button>
+        <button class="account-out" title="Mon compte" onclick="ouvrirMonCompte()">☰</button>
+        <button class="account-out" title="Se déconnecter" onclick="seDeconnecter()">⏻</button>
+      </div>
       <div class="exp-title">Projet actif</div>
       <div class="active-project-name"><span id="activeProjectName">—</span><span id="unsavedDot" class="unsaved-dot hidden" title="Modifications non enregistrées"></span></div>
       <div id="projectList" class="project-list"></div>
       <div class="project-btns">
         <button class="btn-export" onclick="createProject()">Nouveau projet</button>
       </div>
+      <button class="install-btn" id="installBtn" onclick="installerApplication()">⤓ Installer l'application</button>
 
       <div class="exp-title" style="margin-top:14px;">Rédaction assistée</div>
       <div class="sheet-status">
@@ -393,7 +615,6 @@ footer.note{margin-top:30px;font-size:12px;color:var(--ink-soft);line-height:1.6
         <select id="aiModeSel" onchange="onAiModeChange()">
           <option value="serveur">Serveur de l'application (clé protégée)</option>
           <option value="direct">Clé saisie sur ce poste</option>
-          <option value="proxy">Via la base de données (clé protégée)</option>
         </select>
         <div id="aiKeyWrap" style="width:100%;">
           <label class="ai-lbl">Clé d'accès</label>
@@ -415,30 +636,16 @@ footer.note{margin-top:30px;font-size:12px;color:var(--ink-soft);line-height:1.6
         <div id="aiDiag" class="ai-diag"></div>
       </div>
 
-      <div class="exp-title" style="margin-top:14px;">Base de données</div>
+      <div class="exp-title" style="margin-top:14px;">Espace de travail</div>
       <div class="sheet-status">
         <span class="sheet-dot" id="sheetDot"></span>
-        <span id="sheetStatusText">Non connecté</span>
-      </div>
-      <div class="sheet-current" id="sheetCurrentWrap">
-        <div class="sheet-current-label">Source de données actuelle</div>
-        <div class="sheet-current-url" id="sheetCurrentUrl" title="">—</div>
-        <div class="sheet-current-actions">
-          <button class="link-btn" onclick="openSheetEditor()">Modifier</button>
-          <button class="link-btn" onclick="resetSheetUrl()">Rétablir le lien par défaut</button>
-          <button class="link-btn" onclick="pingSheet(true)">Tester</button>
-        </div>
-      </div>
-      <div class="sheet-url-row" id="sheetUrlRow">
-        <input type="text" id="sheetUrlInput" placeholder="Coller l'URL du Web App Apps Script (…/exec)">
-        <button onclick="connectSheet()">Enregistrer</button>
-        <button class="ghost" onclick="closeSheetEditor()">Annuler</button>
+        <span id="sheetStatusText">Hors ligne</span>
       </div>
       <div class="project-btns">
         <button class="btn-export primary" onclick="saveDatabase()">Enregistrer les données</button>
-        <button class="btn-export" onclick="loadDatabase()">Charger les données</button>
+        <button class="btn-export" onclick="loadDatabase()">Ouvrir un projet</button>
       </div>
-      <p class="project-hint">Enregistre <b>tous</b> les projets ouverts dans la base, et les recharge sur n'importe quel appareil. <button class="link-btn" onclick="toggleLocalBackup()">Sauvegarde locale (.json)</button></p>
+      <p class="project-hint">Les projets sont conservés sur le serveur du laboratoire&nbsp;: vous les retrouvez depuis n'importe quel appareil, avec votre identifiant. <button class="link-btn" onclick="toggleLocalBackup()">Sauvegarde locale (.json)</button></p>
       <div class="project-btns" id="localBackupRow" style="display:none;margin-top:6px;">
         <button class="btn-export" onclick="saveDatabaseLocal()">Exporter une copie locale</button>
         <button class="btn-export" onclick="triggerLoadDatabase()">Importer une copie locale</button>
@@ -467,6 +674,95 @@ footer.note{margin-top:30px;font-size:12px;color:var(--ink-soft);line-height:1.6
     <!-- Panels are injected by JS -->
   </main>
 
+</div>
+
+<!-- ============================================================
+     ESPACE DE CONNEXION
+     ============================================================ -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <img class="gate-logo" id="gateLogo" alt="">
+    <h2>Validation de méthode analytique</h2>
+    <p class="gate-sub">Laboratoire Central de Biologie &amp; Toxicologie<br>Hôpital Ali Aït Idir — Alger</p>
+
+    <form id="gateForm" onsubmit="return seConnecter(event)">
+      <div class="gate-field">
+        <label for="gateUser">Identifiant</label>
+        <input type="text" id="gateUser" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      </div>
+      <div class="gate-field">
+        <label for="gatePass">Mot de passe</label>
+        <input type="password" id="gatePass" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="gate-btn" id="gateBtn">Se connecter</button>
+    </form>
+
+    <!-- Changement de mot de passe imposé à la première connexion -->
+    <form id="gateChangeForm" style="display:none;" onsubmit="return changerMotDePasseInitial(event)">
+      <div class="gate-field">
+        <label for="gateNew1">Nouveau mot de passe</label>
+        <input type="password" id="gateNew1" autocomplete="new-password" required>
+      </div>
+      <div class="gate-field">
+        <label for="gateNew2">Confirmer le mot de passe</label>
+        <input type="password" id="gateNew2" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="gate-btn" id="gateChangeBtn">Enregistrer et continuer</button>
+    </form>
+
+    <p class="gate-msg" id="gateMsg"></p>
+    <p class="gate-foot" id="gateFoot">
+      Accès réservé au personnel du laboratoire.<br>
+      En cas d'oubli du mot de passe, contactez l'administrateur de la plateforme.
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+     ADMINISTRATION
+     ============================================================ -->
+<div class="modal-back" id="admModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Administration de la plateforme</h3>
+      <button class="modal-x" onclick="fermerAdmin()" title="Fermer">✕</button>
+    </div>
+    <div class="modal-tabs" id="admTabs">
+      <button class="on" onclick="admOnglet('comptes',this)">Comptes</button>
+      <button onclick="admOnglet('projets',this)">Projets</button>
+      <button onclick="admOnglet('journal',this)">Journal</button>
+      <button onclick="admOnglet('etat',this)">État du service</button>
+    </div>
+    <div class="modal-body" id="admBody">
+      <p class="adm-note">Chargement…</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MON COMPTE
+     ============================================================ -->
+<div class="modal-back" id="compteModal">
+  <div class="modal-box" style="max-width:460px;">
+    <div class="modal-head">
+      <h3>Mon compte</h3>
+      <button class="modal-x" onclick="fermerMonCompte()" title="Fermer">✕</button>
+    </div>
+    <div class="modal-body" id="compteBody"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OUVRIR UN PROJET ENREGISTRÉ
+     ============================================================ -->
+<div class="modal-back" id="ouvrirModal">
+  <div class="modal-box" style="max-width:700px;">
+    <div class="modal-head">
+      <h3>Projets enregistrés</h3>
+      <button class="modal-x" onclick="fermerOuvrir()" title="Fermer">✕</button>
+    </div>
+    <div class="modal-body" id="ouvrirBody"></div>
+  </div>
 </div>
 
 <script>
@@ -584,10 +880,11 @@ function getActive(){ return projects.find(p=>p.id===activeId) || null; }
 
 function createProject(name){
   if(name===undefined){
+    if(SESSION && !peutEcrire()){ toast('Votre niveau d’accès ne permet pas de créer un projet.',true); return; }
     name=prompt('Nom du nouveau projet :','Projet '+(projects.length+1));
     if(name===null) return; // annulé
   }
-  const p={id:uid(), name:(name&&name.trim())||('Projet '+(projects.length+1)), data:defaultState()};
+  const p={id:uid(), sid:null, name:(name&&name.trim())||('Projet '+(projects.length+1)), data:defaultState()};
   projects.push(p);
   activeId=p.id;
   renderProjectList();
@@ -631,8 +928,8 @@ function refreshFormValues(){
 function renderProjectList(){
   const wrap=document.getElementById('projectList');
   wrap.innerHTML=projects.map(p=>`
-    <div class="proj-row${p.id===activeId?' active':''}" data-id="${p.id}">
-      <span class="proj-name" title="${escapeHtmlAttr(p.name)}">${escapeHtmlAttr(p.name)}</span>
+    <div class="proj-row${p.id===activeId?' active':''}${p.sid?' distant':''}" data-id="${p.id}">
+      <span class="proj-name" title="${escapeHtmlAttr(p.name)}${p.sid?' — enregistré sur le serveur':' — jamais enregistré sur le serveur'}">${escapeHtmlAttr(p.name)}</span>
       <span class="proj-actions">
         <button title="Renommer" onclick="event.stopPropagation();renameProject('${p.id}')">✎</button>
         <button title="Fermer" onclick="event.stopPropagation();deleteProject('${p.id}')">✕</button>
@@ -760,163 +1057,384 @@ function handleLoadDatabaseFile(evt){
 }
 
 /* ============================================================
-   SOURCE DE DONNÉES (Google Sheet via Apps Script Web App)
+   SERVEUR DE L'APPLICATION — comptes, sessions, projets
    ------------------------------------------------------------
-   L'URL n'est jamais codée en dur ailleurs dans l'application :
-   tout passe par getSheetUrl() / setSheetUrl(). L'administrateur
-   peut la remplacer depuis la barre latérale ; le lien de
-   remplacement est mémorisé dans le navigateur et redevient
-   le lien par défaut ci-dessous en cas de réinitialisation.
+   Les données sont conservées sur le serveur de la plateforme
+   (Vercel). Aucun service tiers n'intervient : tout passe par
+   /api/auth, /api/projects, /api/users et /api/logs, protégés
+   par la session de l'utilisateur connecté.
    ============================================================ */
-const SHEET_URL_DEFAULT = 'https://script.google.com/macros/s/AKfycbxA07OM9U1MiiLhIrr5eyH0m3hGC2JFEKlen7x8AXrCNghb4BCv9SSNj9BhNEobdlRt/exec';
-const SHEET_URL_STORAGE_KEY = 'validationApp.sheetUrl';
-let SHEET_URL_OVERRIDE = null;   /* défini uniquement si l'admin change le lien */
 
-function getSheetUrl(){ return SHEET_URL_OVERRIDE || SHEET_URL_DEFAULT; }
-function isCustomSheetUrl(){ return !!SHEET_URL_OVERRIDE && SHEET_URL_OVERRIDE!==SHEET_URL_DEFAULT; }
+let SESSION = null;          /* utilisateur connecté, ou null */
+let ETAT_STOCKAGE = null;    /* 'redis' | 'blob' | 'memoire' */
+let SERVEUR_JOIGNABLE = false;
 
-function loadStoredSheetUrl(){
-  try{
-    const v=window.localStorage.getItem(SHEET_URL_STORAGE_KEY);
-    if(v) SHEET_URL_OVERRIDE=v;
-  }catch(e){ /* stockage indisponible (fichier local) : on garde le défaut */ }
+function surServeur(){
+  return location.protocol === 'http:' || location.protocol === 'https:';
 }
-function persistSheetUrl(url){
-  try{
-    if(url) window.localStorage.setItem(SHEET_URL_STORAGE_KEY,url);
-    else window.localStorage.removeItem(SHEET_URL_STORAGE_KEY);
-    return true;
-  }catch(e){ return false; }
+
+/* Appel au serveur. Renvoie toujours un objet ; ne lève que si le
+   serveur est injoignable. */
+async function api(route, charge){
+  if(!surServeur()){
+    throw new Error('Application ouverte en fichier local : le serveur n’est pas accessible.');
+  }
+  const opts = charge === undefined
+    ? { method:'GET', credentials:'same-origin' }
+    : { method:'POST', credentials:'same-origin',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify(charge) };
+  const r = await fetch('/api/'+route, opts);
+  let d = null;
+  try{ d = await r.json(); }catch(e){ throw new Error('Réponse illisible du serveur (HTTP '+r.status+').'); }
+  if(r.status === 401){
+    /* Session expirée : on repasse par l'écran de connexion sans
+       perdre les projets ouverts à l'écran. */
+    SESSION = null;
+    renderCompte();
+    ouvrirPortail('Votre session a expiré. Reconnectez-vous pour continuer.','info');
+    d.code = 'NONCONNECTE';
+  }
+  return d;
 }
-function setSheetUrl(url){
-  SHEET_URL_OVERRIDE = (url && url!==SHEET_URL_DEFAULT) ? url : null;
-  const persisted=persistSheetUrl(SHEET_URL_OVERRIDE);
-  renderSheetUrl();
-  return persisted;
+
+function setSheetStatus(connecte, texte){
+  const dot = document.getElementById('sheetDot');
+  const txt = document.getElementById('sheetStatusText');
+  if(dot) dot.className = 'sheet-dot '+(connecte?'on':'off');
+  if(txt) txt.textContent = texte;
 }
-function resetSheetUrl(){
-  if(!isCustomSheetUrl()){ toast('Le lien par défaut est déjà utilisé.'); return; }
-  if(!confirm('Rétablir le lien Google Sheet par défaut ?')) return;
-  setSheetUrl(null);
-  toast('Lien par défaut rétabli.');
-  pingSheet();
+
+function libelleStockage(mode){
+  if(mode === 'redis') return 'Base de données (Redis)';
+  if(mode === 'blob')  return 'Stockage de fichiers (Blob)';
+  return 'Mémoire temporaire';
 }
-function renderSheetUrl(){
-  const el=document.getElementById('sheetCurrentUrl');
+
+/* ============================================================
+   CONNEXION
+   ============================================================ */
+
+function ouvrirPortail(message, genre){
+  const g = document.getElementById('gate');
+  if(g) g.classList.remove('hidden');
+  document.getElementById('gateForm').style.display = '';
+  document.getElementById('gateChangeForm').style.display = 'none';
+  if(message) msgPortail(message, genre || 'info');
+  const u = document.getElementById('gateUser');
+  if(u && !u.value) setTimeout(()=>u.focus(), 60);
+}
+function fermerPortail(){
+  const g = document.getElementById('gate');
+  if(g) g.classList.add('hidden');
+}
+function msgPortail(texte, genre){
+  const el = document.getElementById('gateMsg');
   if(!el) return;
-  const url=getSheetUrl();
-  el.textContent=url;
-  el.setAttribute('title',url);
-  const label=document.querySelector('.sheet-current-label');
-  if(label) label.innerHTML='Source de données actuelle'+(isCustomSheetUrl()?'<span class="sheet-badge">personnalisée</span>':'<span class="sheet-badge">par défaut</span>');
+  if(!texte){ el.className = 'gate-msg'; el.textContent = ''; return; }
+  el.textContent = texte;
+  el.className = 'gate-msg on '+(genre || 'info');
 }
 
-function openSheetEditor(){
-  const row=document.getElementById('sheetUrlRow');
-  row.classList.add('open');
-  document.getElementById('sheetUrlInput').value=getSheetUrl();
-  document.getElementById('sheetUrlInput').focus();
+async function seConnecter(evt){
+  evt.preventDefault();
+  const btn  = document.getElementById('gateBtn');
+  const user = document.getElementById('gateUser').value.trim();
+  const pass = document.getElementById('gatePass').value;
+
+  btn.disabled = true;
+  btn.textContent = 'Connexion…';
+  msgPortail('');
+
+  try{
+    const d = await api('auth', { action:'connexion', identifiant:user, motDePasse:pass });
+    if(!d || !d.ok){
+      msgPortail((d && d.error) || 'Connexion refusée.', 'ko');
+      document.getElementById('gatePass').value = '';
+      document.getElementById('gatePass').focus();
+      return false;
+    }
+    SESSION = d.utilisateur;
+    ETAT_STOCKAGE = d.stockage;
+    SERVEUR_JOIGNABLE = true;
+
+    if(d.doitChanger){
+      /* Premier mot de passe : on impose son remplacement avant
+         de donner accès à l'application. */
+      document.getElementById('gateForm').style.display = 'none';
+      document.getElementById('gateChangeForm').style.display = '';
+      msgPortail('Pour votre sécurité, choisissez un mot de passe personnel avant de continuer.', 'info');
+      setTimeout(()=>document.getElementById('gateNew1').focus(), 60);
+      return false;
+    }
+    await apresConnexion();
+    return false;
+  }catch(e){
+    msgPortail('Serveur injoignable : '+e.message, 'ko');
+    return false;
+  }finally{
+    btn.disabled = false;
+    btn.textContent = 'Se connecter';
+  }
 }
-function closeSheetEditor(){ document.getElementById('sheetUrlRow').classList.remove('open'); }
-function toggleSheetUrlRow(){
-  const row=document.getElementById('sheetUrlRow');
-  if(row.classList.contains('open')) closeSheetEditor(); else openSheetEditor();
+
+async function changerMotDePasseInitial(evt){
+  evt.preventDefault();
+  const btn = document.getElementById('gateChangeBtn');
+  const a = document.getElementById('gateNew1').value;
+  const b = document.getElementById('gateNew2').value;
+  const ancien = document.getElementById('gatePass').value;
+
+  if(a !== b){ msgPortail('Les deux mots de passe ne correspondent pas.', 'ko'); return false; }
+
+  btn.disabled = true;
+  btn.textContent = 'Enregistrement…';
+  try{
+    const d = await api('auth', { action:'motDePasse', ancien:ancien, nouveau:a });
+    if(!d || !d.ok){ msgPortail((d && d.error) || 'Échec.', 'ko'); return false; }
+    SESSION = d.utilisateur;
+    document.getElementById('gatePass').value = '';
+    document.getElementById('gateNew1').value = '';
+    document.getElementById('gateNew2').value = '';
+    await apresConnexion();
+    toast('Mot de passe enregistré.');
+    return false;
+  }catch(e){
+    msgPortail('Serveur injoignable : '+e.message, 'ko');
+    return false;
+  }finally{
+    btn.disabled = false;
+    btn.textContent = 'Enregistrer et continuer';
+  }
 }
-function setSheetStatus(connected,text){
-  document.getElementById('sheetDot').className='sheet-dot '+(connected?'on':'off');
-  document.getElementById('sheetStatusText').textContent=text;
+
+async function apresConnexion(){
+  fermerPortail();
+  msgPortail('');
+  document.getElementById('gatePass').value = '';
+  renderCompte();
+  setSheetStatus(true, libelleStockage(ETAT_STOCKAGE));
+  if(ETAT_STOCKAGE === 'memoire'){
+    toast('Attention : aucun espace de stockage n’est encore configuré sur le serveur. Les projets ne seront pas conservés.', true);
+  }
+  await rafraichirListeServeur();
+  detecterServeurIA();
 }
-function connectSheet(){
-  const url=document.getElementById('sheetUrlInput').value.trim();
-  if(!url){ toast('Collez une URL de Web App Apps Script.',true); return; }
-  if(!/^https:\/\/script\.google(usercontent)?\.com\//.test(url)){
-    toast('Cette URL ne ressemble pas à une URL de Web App Google Apps Script.',true);
+
+async function seDeconnecter(){
+  if(dirty && !confirm('Des modifications ne sont pas enregistrées. Se déconnecter quand même ?')) return;
+  try{ await api('auth', { action:'deconnexion' }); }catch(e){}
+  SESSION = null;
+  renderCompte();
+  setSheetStatus(false, 'Déconnecté');
+  AI_CFG.enabled = false;
+  renderAiPanel();
+  ouvrirPortail('Vous êtes déconnecté.', 'ok');
+}
+
+/* Reprise de session au chargement (le cookie peut être encore valide) */
+async function verifierSession(){
+  if(!surServeur()){
+    /* Ouverture directe du fichier : pas de serveur, pas de comptes.
+       L'application reste utilisable hors ligne, avec les fichiers .json. */
+    SERVEUR_JOIGNABLE = false;
+    fermerPortail();
+    setSheetStatus(false, 'Hors ligne — fichier local');
+    const box = document.getElementById('accountBox');
+    if(box) box.style.display = 'none';
+    toast('Ouverture locale : les projets ne peuvent être enregistrés que sous forme de fichier .json.');
     return;
   }
-  if(!/\/exec\/?$/.test(url)){
-    if(!confirm('Cette URL ne se termine pas par /exec. L’enregistrer quand même ?')) return;
-  }
-  const persisted=setSheetUrl(url);
-  closeSheetEditor();
-  toast(persisted
-    ? 'Nouveau lien enregistré comme source de données.'
-    : 'Lien appliqué pour cette session (mémorisation indisponible en ouverture locale).');
-  pingSheet(true);
-}
-async function pingSheet(verbose){
-  setSheetStatus(false,'Test en cours…');
   try{
-    const res=await sheetCall('ping',{});
-    if(res && res.ok){
-      setSheetStatus(true,'Connecté');
-      if(verbose) toast('Connexion à la base de données réussie.');
+    const d = await api('auth');
+    SERVEUR_JOIGNABLE = true;
+    ETAT_STOCKAGE = d.stockage;
+    if(d.connecte){
+      SESSION = d.utilisateur;
+      await apresConnexion();
     } else {
-      setSheetStatus(false,'Réponse inattendue');
-      if(verbose) toast('Le serveur a répondu, mais de façon inattendue.',true);
-    }
-  }catch(e){
-    setSheetStatus(false,'Non connecté');
-    if(verbose) toast('Impossible de contacter la base ('+e.message+').',true);
-  }
-}
-function sheetCall(action,payload){
-  const url=getSheetUrl();
-  if(!url){
-    toast('Aucune source de données configurée.',true);
-    return Promise.reject(new Error('no url'));
-  }
-  return fetch(url,{
-    method:'POST',
-    body:JSON.stringify(Object.assign({action:action},payload))
-  }).then(r=>{
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
-  });
-}
-async function saveDatabase(){
-  if(!projects.length){ toast('Aucun projet à enregistrer.',true); return; }
-  if(!getSheetUrl()){ openSheetEditor(); toast('Aucune source de données configurée.',true); return; }
-  toast('Enregistrement sur Google Sheet…');
-  try{
-    const res=await sheetCall('saveAll',{ projects: projects.map(p=>({id:p.id,name:p.name,data:p.data})) });
-    if(res && res.ok){
-      setDirty(false);
-      setSheetStatus(true,'Connecté');
-      toast(projects.length+' projet(s) enregistré(s) sur le Google Sheet.');
-    } else {
-      toast('Échec de l\u2019enregistrement : '+((res&&res.error)||'réponse inattendue'),true);
-    }
-  }catch(e){
-    setSheetStatus(false,'Erreur de connexion');
-    toast('Impossible de contacter le Google Sheet ('+e.message+'). Vérifiez l\u2019URL et le déploiement.',true);
-  }
-}
-async function loadDatabase(){
-  if(!getSheetUrl()){ openSheetEditor(); toast('Aucune source de données configurée.',true); return; }
-  toast('Chargement depuis Google Sheet…');
-  try{
-    const res=await sheetCall('loadAll',{});
-    if(res && res.ok){
-      if(!res.projects || !res.projects.length){
-        toast('Aucun projet trouvé sur ce Google Sheet.',true);
-        return;
+      let avis = null, genre = 'info';
+      if(d.amorce && d.amorce.motDePasse){
+        avis = 'Premier démarrage : identifiant « '+d.amorce.identifiant+' », mot de passe « '+d.amorce.motDePasse+' ». Il vous sera demandé de le changer.';
       }
-      projects=res.projects.map(p=>({id:p.id||uid(),name:p.name||'Projet',data:mergeState(defaultState(),p.data||{})}));
-      activeId=projects[0].id;
-      renderProjectList();
-      loadActiveIntoForm();
-      setDirty(false);
-      setSheetStatus(true,'Connecté');
-      toast(projects.length+' projet(s) chargé(s) depuis le Google Sheet.');
-    } else {
-      toast('Échec du chargement : '+((res&&res.error)||'réponse inattendue'),true);
+      ouvrirPortail(avis, genre);
     }
   }catch(e){
-    setSheetStatus(false,'Erreur de connexion');
-    toast('Impossible de contacter le Google Sheet ('+e.message+'). Vérifiez l\u2019URL et le déploiement.',true);
+    SERVEUR_JOIGNABLE = false;
+    ouvrirPortail('Le serveur ne répond pas ('+e.message+'). Vérifiez votre connexion.', 'ko');
   }
 }
 
+function renderCompte(){
+  const box = document.getElementById('accountBox');
+  if(!box) return;
+  if(!SESSION){ box.style.display = 'none'; return; }
+  box.style.display = 'flex';
+  const nom = [SESSION.prenom, SESSION.nom].filter(Boolean).join(' ') || SESSION.identifiant;
+  const ini = ((SESSION.prenom||SESSION.identifiant).charAt(0) + (SESSION.nom||'').charAt(0)).toUpperCase();
+  document.getElementById('accountIni').textContent = ini || '•';
+  document.getElementById('accountNom').textContent = (SESSION.titre ? SESSION.titre+' ' : '') + nom;
+  document.getElementById('accountRole').textContent = NIVEAU_LIBELLE[SESSION.niveau] || SESSION.niveau;
+  document.getElementById('btnAdmin').style.display = (SESSION.niveau === 'admin') ? '' : 'none';
+}
+
+const NIVEAU_LIBELLE = {
+  admin:'Administrateur', valideur:'Valideur',
+  redacteur:'Rédacteur', lecteur:'Lecteur (consultation)'
+};
+const NIVEAU_RANG = { admin:100, valideur:60, redacteur:40, lecteur:10 };
+function peutEcrire(){ return SESSION && (NIVEAU_RANG[SESSION.niveau]||0) >= NIVEAU_RANG.redacteur; }
+
+/* ============================================================
+   PROJETS — enregistrement et ouverture sur le serveur
+   ============================================================ */
+
+let PROJETS_SERVEUR = [];
+
+async function rafraichirListeServeur(){
+  if(!SESSION) return;
+  try{
+    const d = await api('projects', { action:'liste' });
+    if(d && d.ok){ PROJETS_SERVEUR = d.projets || []; }
+  }catch(e){ /* affichage inchangé */ }
+}
+
+/* « Enregistrer les données » : enregistre tous les projets ouverts. */
+async function saveDatabase(){
+  if(!surServeur()){
+    toast('Ouverture locale : utilisez « Sauvegarde locale (.json) » pour conserver vos projets.', true);
+    const row = document.getElementById('localBackupRow');
+    if(row) row.style.display = 'flex';
+    return;
+  }
+  if(!SESSION){ ouvrirPortail('Connectez-vous pour enregistrer vos projets.', 'info'); return; }
+  if(!peutEcrire()){ toast('Votre niveau d’accès ne permet pas d’enregistrer.', true); return; }
+  if(!projects.length){ toast('Aucun projet à enregistrer.', true); return; }
+
+  toast('Enregistrement en cours…');
+  let crees = 0, majs = 0, echecs = [];
+
+  for(const p of projects){
+    try{
+      let d;
+      if(p.sid){
+        d = await api('projects', { action:'enregistrer', id:p.sid, nom:p.name, donnees:p.data });
+        if(d && d.ok) majs++;
+      } else {
+        d = await api('projects', { action:'creer', nom:p.name, donnees:p.data });
+        if(d && d.ok){ p.sid = d.projet.id; crees++; }
+      }
+      if(!d || !d.ok) echecs.push(p.name+' : '+((d && d.error) || 'réponse inattendue'));
+    }catch(e){
+      echecs.push(p.name+' : '+e.message);
+    }
+  }
+
+  await rafraichirListeServeur();
+  renderProjectList();
+
+  if(echecs.length){
+    setSheetStatus(false, 'Enregistrement incomplet');
+    toast('Échec pour '+echecs.length+' projet(s) — '+echecs[0], true);
+  } else {
+    setDirty(false);
+    setSheetStatus(true, libelleStockage(ETAT_STOCKAGE));
+    toast((crees+majs)+' projet(s) enregistré(s) sur le serveur.');
+  }
+}
+
+/* « Ouvrir un projet » : liste des projets enregistrés */
+async function loadDatabase(){
+  if(!surServeur()){
+    toast('Ouverture locale : utilisez « Sauvegarde locale (.json) » pour rouvrir un projet.', true);
+    const row = document.getElementById('localBackupRow');
+    if(row) row.style.display = 'flex';
+    return;
+  }
+  if(!SESSION){ ouvrirPortail('Connectez-vous pour accéder à vos projets.', 'info'); return; }
+  await rafraichirListeServeur();
+  renderOuvrir();
+  document.getElementById('ouvrirModal').classList.add('on');
+}
+function fermerOuvrir(){ document.getElementById('ouvrirModal').classList.remove('on'); }
+
+function renderOuvrir(){
+  const el = document.getElementById('ouvrirBody');
+  if(!PROJETS_SERVEUR.length){
+    el.innerHTML = '<p class="adm-note">Aucun projet enregistré pour le moment. '
+      + 'Créez un projet, saisissez vos données, puis utilisez <b>Enregistrer les données</b>.</p>';
+    return;
+  }
+  const lignes = PROJETS_SERVEUR.map(p=>{
+    const ouvert = projects.some(x=>x.sid===p.id);
+    return `<tr>
+      <td><b>${escapeHtmlAttr(p.nom)}</b>${p.partage?' <span class="pill valideur">équipe</span>':''}${p.amoi?'':' <span class="pill lecteur">'+escapeHtmlAttr(p.proprietaire)+'</span>'}</td>
+      <td class="mono">${p.majLe ? frDateHeure(p.majLe) : '—'}</td>
+      <td class="mono">${escapeHtmlAttr(p.majPar||'—')}</td>
+      <td class="adm-act">
+        <button onclick="ouvrirProjetServeur('${p.id}')">${ouvert?'Recharger':'Ouvrir'}</button>
+        ${p.supprimable?`<button class="danger" onclick="supprimerProjetServeur('${p.id}')">Supprimer</button>`:''}
+      </td>
+    </tr>`;
+  }).join('');
+  el.innerHTML = `<table class="adm-table">
+      <tr><th>Projet</th><th>Dernier enregistrement</th><th>Par</th><th></th></tr>
+      ${lignes}
+    </table>
+    <p class="adm-note">Un projet ouvert est chargé dans la barre latérale&nbsp;; vos modifications ne sont transmises au serveur qu'au moment où vous cliquez sur <b>Enregistrer les données</b>.</p>`;
+}
+
+async function ouvrirProjetServeur(id){
+  try{
+    const d = await api('projects', { action:'charger', id:id });
+    if(!d || !d.ok){ toast((d && d.error) || 'Ouverture impossible.', true); return; }
+
+    const data = mergeState(defaultState(), d.donnees || {});
+    const existant = projects.find(x=>x.sid===id);
+    if(existant){
+      if(dirty && !confirm('Recharger « '+d.projet.nom+' » depuis le serveur ? Les modifications non enregistrées de ce projet seront perdues.')) return;
+      existant.data = data;
+      existant.name = d.projet.nom;
+      activeId = existant.id;
+    } else {
+      const p = { id:uid(), sid:id, name:d.projet.nom, data:data, modifiable:d.modifiable };
+      projects.push(p);
+      activeId = p.id;
+    }
+    renderProjectList();
+    loadActiveIntoForm();
+    setDirty(false);
+    fermerOuvrir();
+    toast('Projet « '+d.projet.nom+' » ouvert.');
+  }catch(e){
+    toast('Serveur injoignable : '+e.message, true);
+  }
+}
+
+async function supprimerProjetServeur(id){
+  const p = PROJETS_SERVEUR.find(x=>x.id===id);
+  if(!p) return;
+  if(!confirm('Supprimer définitivement « '+p.nom+' » du serveur ?\n\nCette opération est irréversible.')) return;
+  try{
+    const d = await api('projects', { action:'supprimer', id:id });
+    if(!d || !d.ok){ toast((d && d.error) || 'Suppression impossible.', true); return; }
+    projects.forEach(x=>{ if(x.sid===id) x.sid = null; });
+    await rafraichirListeServeur();
+    renderOuvrir();
+    renderProjectList();
+    toast('Projet supprimé du serveur.');
+  }catch(e){
+    toast('Serveur injoignable : '+e.message, true);
+  }
+}
+
+function frDateHeure(iso){
+  try{
+    const d = new Date(iso);
+    const p = n=>String(n).padStart(2,'0');
+    return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' '+p(d.getHours())+':'+p(d.getMinutes());
+  }catch(e){ return iso; }
+}
 
 const SECTIONS = [
   {id:'j1',label:'Bibliographie'},
@@ -1541,13 +2059,13 @@ function initLayout(){
   createProject('Projet 1');
   setDirty(false);
   const bl=document.getElementById('brandLogo'); if(bl) bl.src=LOGO_B64;
+  const gl=document.getElementById('gateLogo'); if(gl) gl.src=LOGO_B64;
   loadAiConfig();
   renderAiPanel();
   renderJatNote();
-  detecterServeurIA();
-  loadStoredSheetUrl();
-  renderSheetUrl();
-  pingSheet();
+  preparerInstallation();
+  enregistrerServiceWorker();
+  verifierSession();
 }
 
 function switchTab(id){
@@ -3169,6 +3687,7 @@ async function aiCall(systemPrompt,userPrompt){
   if(AI_CFG.mode==='serveur'){
     const r=await fetch('/api/ai',{
       method:'POST',
+      credentials:'same-origin',
       headers:{'content-type':'application/json'},
       body:JSON.stringify({
         provider:AI_CFG.provider||undefined,
@@ -3177,22 +3696,12 @@ async function aiCall(systemPrompt,userPrompt){
         user:userPrompt
       })
     });
+    if(r.status===401) throw new Error('session expirée — reconnectez-vous');
+    if(r.status===403) throw new Error('votre niveau d’accès ne permet pas la rédaction assistée');
     if(!r.ok) throw new Error('HTTP '+r.status);
     const d=await r.json();
     if(!d||!d.ok) throw new Error((d&&d.error)||'service indisponible');
     return d.text;
-  }
-
-  /* Mode proxy : la requête transite par la base, la clé reste côté serveur */
-  if(AI_CFG.mode==='proxy'){
-    const res=await sheetCall('ai',{
-      provider:AI_CFG.provider||'anthropic',
-      model:AI_CFG.model,
-      system:systemPrompt,
-      user:userPrompt
-    });
-    if(!res||!res.ok) throw new Error((res&&res.error)||'service indisponible');
-    return res.text;
   }
 
   const prov=AI_PROVIDERS[AI_CFG.provider]||AI_PROVIDERS.anthropic;
@@ -4534,6 +5043,361 @@ async function exportExcerpt(){
     ${AI_CFG.enabled?`Rédaction assistée par modèle de langage avec vérification numérique automatique (${aiUsed} section(s) retenue(s)${aiRejected?`, ${aiRejected} rejetée(s)`:''}).`:''}
   </div>`;
   downloadWord(projFileName('Extrait_article_validation'),html);
+}
+
+
+/* ============================================================
+   MON COMPTE
+   ============================================================ */
+
+function ouvrirMonCompte(){
+  if(!SESSION) return;
+  const nom = [SESSION.prenom, SESSION.nom].filter(Boolean).join(' ') || '—';
+  document.getElementById('compteBody').innerHTML = `
+    <h4>Identité</h4>
+    <table class="adm-table">
+      <tr><td style="width:40%;color:#5B6674;">Identifiant</td><td class="mono">${escapeHtmlAttr(SESSION.identifiant)}</td></tr>
+      <tr><td style="color:#5B6674;">Nom et prénom</td><td>${escapeHtmlAttr((SESSION.titre?SESSION.titre+' ':'')+nom)}</td></tr>
+      <tr><td style="color:#5B6674;">Niveau d'accès</td><td><span class="pill ${SESSION.niveau}">${NIVEAU_LIBELLE[SESSION.niveau]||SESSION.niveau}</span></td></tr>
+      <tr><td style="color:#5B6674;">Dernière connexion</td><td class="mono">${SESSION.derniereConnexion?frDateHeure(SESSION.derniereConnexion):'—'}</td></tr>
+    </table>
+
+    <h4>Changer mon mot de passe</h4>
+    <div class="adm-form">
+      <div class="full"><label>Mot de passe actuel</label><input type="password" id="mcAncien" autocomplete="current-password"></div>
+      <div><label>Nouveau mot de passe</label><input type="password" id="mcNouveau" autocomplete="new-password"></div>
+      <div><label>Confirmation</label><input type="password" id="mcConfirme" autocomplete="new-password"></div>
+      <div class="full"><button onclick="validerMonMotDePasse(this)">Enregistrer</button></div>
+    </div>
+    <p class="adm-note">Au moins 8 caractères, comprenant une lettre et un chiffre. Le mot de passe n'est jamais conservé en clair&nbsp;: seule une empreinte calculée est enregistrée.</p>`;
+  document.getElementById('compteModal').classList.add('on');
+}
+function fermerMonCompte(){ document.getElementById('compteModal').classList.remove('on'); }
+
+async function validerMonMotDePasse(btn){
+  const ancien = document.getElementById('mcAncien').value;
+  const nouveau = document.getElementById('mcNouveau').value;
+  const confirme = document.getElementById('mcConfirme').value;
+  if(nouveau !== confirme){ toast('Les deux mots de passe ne correspondent pas.', true); return; }
+  btn.disabled = true;
+  try{
+    const d = await api('auth', { action:'motDePasse', ancien:ancien, nouveau:nouveau });
+    if(!d || !d.ok){ toast((d && d.error) || 'Échec.', true); return; }
+    SESSION = d.utilisateur;
+    toast('Mot de passe modifié.');
+    fermerMonCompte();
+  }catch(e){ toast('Serveur injoignable : '+e.message, true); }
+  finally{ btn.disabled = false; }
+}
+
+/* ============================================================
+   ADMINISTRATION
+   ============================================================ */
+
+let ADM_ONGLET = 'comptes';
+
+function ouvrirAdmin(){
+  if(!SESSION || SESSION.niveau !== 'admin'){ toast('Accès réservé à l’administrateur.', true); return; }
+  document.getElementById('admModal').classList.add('on');
+  admOnglet(ADM_ONGLET, null);
+}
+function fermerAdmin(){ document.getElementById('admModal').classList.remove('on'); }
+
+function admOnglet(nom, btn){
+  ADM_ONGLET = nom;
+  const tabs = document.getElementById('admTabs').querySelectorAll('button');
+  tabs.forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  else {
+    const i = ['comptes','projets','journal','etat'].indexOf(nom);
+    if(i >= 0 && tabs[i]) tabs[i].classList.add('on');
+  }
+  document.getElementById('admBody').innerHTML = '<p class="adm-note">Chargement…</p>';
+  if(nom === 'comptes') admComptes();
+  else if(nom === 'projets') admProjets();
+  else admJournal(nom === 'etat');
+}
+
+/* ---------- Comptes ---------- */
+async function admComptes(){
+  let d;
+  try{ d = await api('users', { action:'liste' }); }
+  catch(e){ document.getElementById('admBody').innerHTML = '<p class="adm-warn">Serveur injoignable : '+escapeHtmlAttr(e.message)+'</p>'; return; }
+  if(!d || !d.ok){
+    document.getElementById('admBody').innerHTML = '<p class="adm-warn">'+escapeHtmlAttr((d && d.error) || 'Erreur.')+'</p>';
+    return;
+  }
+
+  const lignes = (d.utilisateurs || []).map(u=>{
+    const nom = [u.prenom, u.nom].filter(Boolean).join(' ') || '—';
+    const moi = u.identifiant === SESSION.identifiant;
+    return `<tr>
+      <td class="mono"><b>${escapeHtmlAttr(u.identifiant)}</b>${moi?' <span class="pill valideur">vous</span>':''}</td>
+      <td>${escapeHtmlAttr((u.titre?u.titre+' ':'')+nom)}</td>
+      <td><span class="pill ${u.niveau}">${NIVEAU_LIBELLE[u.niveau]||u.niveau}</span></td>
+      <td><span class="pill ${u.actif===false?'inactif':'actif'}">${u.actif===false?'désactivé':'actif'}</span></td>
+      <td class="mono">${u.derniereConnexion?frDateHeure(u.derniereConnexion):'jamais'}</td>
+      <td class="adm-act">
+        <button onclick="admModifier('${escapeHtmlAttr(u.identifiant)}')">Modifier</button>
+        <button onclick="admReinitialiser('${escapeHtmlAttr(u.identifiant)}')">Mot de passe</button>
+        ${moi?'':`<button class="danger" onclick="admSupprimer('${escapeHtmlAttr(u.identifiant)}')">Supprimer</button>`}
+      </td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('admBody').innerHTML = `
+    <h4>Comptes existants</h4>
+    <table class="adm-table">
+      <tr><th>Identifiant</th><th>Nom</th><th>Niveau</th><th>État</th><th>Dernière connexion</th><th></th></tr>
+      ${lignes || '<tr><td colspan="6" style="color:#8798AB;">Aucun compte.</td></tr>'}
+    </table>
+
+    <h4>Créer un compte</h4>
+    <div class="adm-form">
+      <div><label>Identifiant</label><input type="text" id="nuId" placeholder="y.zebbiche" autocapitalize="none" spellcheck="false"></div>
+      <div><label>Titre</label><input type="text" id="nuTitre" placeholder="Dr, Pr, M., Mme"></div>
+      <div><label>Nom</label><input type="text" id="nuNom" placeholder="ZEBBICHE"></div>
+      <div><label>Prénom</label><input type="text" id="nuPrenom" placeholder="Younes"></div>
+      <div><label>Niveau d'accès</label>
+        <select id="nuNiveau">
+          <option value="redacteur">Rédacteur — saisit et exporte</option>
+          <option value="valideur">Valideur — voit tous les projets</option>
+          <option value="lecteur">Lecteur — consultation seule</option>
+          <option value="admin">Administrateur</option>
+        </select>
+      </div>
+      <div><label>Mot de passe initial</label><input type="text" id="nuPass" placeholder="8 caractères minimum"></div>
+      <div class="full"><button onclick="admCreer(this)">Créer le compte</button></div>
+    </div>
+    <p class="adm-note">Le mot de passe initial est à communiquer à la personne concernée&nbsp;; <b>l'application lui imposera de le changer</b> à sa première connexion.</p>
+
+    <h4>Niveaux d'accès</h4>
+    <table class="adm-table">
+      <tr><td><span class="pill lecteur">Lecteur</span></td><td>Consulte les projets qui lui sont accessibles. Ne saisit rien, n'exporte pas avec l'assistant.</td></tr>
+      <tr><td><span class="pill redacteur">Rédacteur</span></td><td>Crée et modifie ses propres projets, exporte les rapports et articles, utilise la rédaction assistée.</td></tr>
+      <tr><td><span class="pill valideur">Valideur</span></td><td>Mêmes droits, et accès en lecture et en écriture à <b>tous</b> les projets du laboratoire.</td></tr>
+      <tr><td><span class="pill admin">Administrateur</span></td><td>Tout ce qui précède, plus la gestion des comptes, le journal des actions et la suppression de n'importe quel projet.</td></tr>
+    </table>`;
+}
+
+async function admCreer(btn){
+  const corps = {
+    action:'creer',
+    identifiant: document.getElementById('nuId').value,
+    titre: document.getElementById('nuTitre').value,
+    nom: document.getElementById('nuNom').value,
+    prenom: document.getElementById('nuPrenom').value,
+    niveau: document.getElementById('nuNiveau').value,
+    motDePasse: document.getElementById('nuPass').value
+  };
+  btn.disabled = true;
+  try{
+    const d = await api('users', corps);
+    if(!d || !d.ok){ toast((d && d.error) || 'Création impossible.', true); return; }
+    toast('Compte « '+d.utilisateur.identifiant+' » créé.');
+    admComptes();
+  }catch(e){ toast('Serveur injoignable : '+e.message, true); }
+  finally{ btn.disabled = false; }
+}
+
+async function admModifier(identifiant){
+  const niveau = prompt(
+    'Niveau d\'accès de « '+identifiant+' » :\n\n'
+    + 'lecteur · redacteur · valideur · admin\n\n'
+    + 'Ajoutez « inactif » pour désactiver le compte (exemple : redacteur inactif).',
+    'redacteur');
+  if(niveau === null) return;
+  const mots = niveau.trim().toLowerCase().split(/\s+/);
+  const n = mots[0];
+  if(!['lecteur','redacteur','valideur','admin'].includes(n)){
+    toast('Niveau inconnu : '+n, true); return;
+  }
+  try{
+    const d = await api('users', { action:'modifier', identifiant:identifiant, niveau:n, actif: !mots.includes('inactif') });
+    if(!d || !d.ok){ toast((d && d.error) || 'Modification impossible.', true); return; }
+    toast('Compte modifié.');
+    admComptes();
+  }catch(e){ toast('Serveur injoignable : '+e.message, true); }
+}
+
+async function admReinitialiser(identifiant){
+  const mdp = prompt('Nouveau mot de passe pour « '+identifiant+' » :\n\n'
+    + '8 caractères minimum, avec au moins une lettre et un chiffre.\n'
+    + 'Il devra le changer à sa prochaine connexion.');
+  if(!mdp) return;
+  try{
+    const d = await api('users', { action:'reinitialiser', identifiant:identifiant, motDePasse:mdp });
+    if(!d || !d.ok){ toast((d && d.error) || 'Échec.', true); return; }
+    toast('Mot de passe réinitialisé. Communiquez-le à l’intéressé.');
+    admComptes();
+  }catch(e){ toast('Serveur injoignable : '+e.message, true); }
+}
+
+async function admSupprimer(identifiant){
+  if(!confirm('Supprimer le compte « '+identifiant+' » ?\n\n'
+    + 'Ses projets ne sont pas supprimés, mais il ne pourra plus se connecter.')) return;
+  try{
+    const d = await api('users', { action:'supprimer', identifiant:identifiant });
+    if(!d || !d.ok){ toast((d && d.error) || 'Suppression impossible.', true); return; }
+    toast('Compte supprimé.');
+    admComptes();
+  }catch(e){ toast('Serveur injoignable : '+e.message, true); }
+}
+
+/* ---------- Projets (vue administrateur : tout voir) ---------- */
+async function admProjets(){
+  let d;
+  try{ d = await api('projects', { action:'liste' }); }
+  catch(e){ document.getElementById('admBody').innerHTML = '<p class="adm-warn">Serveur injoignable : '+escapeHtmlAttr(e.message)+'</p>'; return; }
+  if(!d || !d.ok){
+    document.getElementById('admBody').innerHTML = '<p class="adm-warn">'+escapeHtmlAttr((d && d.error) || 'Erreur.')+'</p>';
+    return;
+  }
+  PROJETS_SERVEUR = d.projets || [];
+  const lignes = PROJETS_SERVEUR.map(p=>`<tr>
+      <td><b>${escapeHtmlAttr(p.nom)}</b>${p.partage?' <span class="pill valideur">équipe</span>':''}</td>
+      <td class="mono">${escapeHtmlAttr(p.proprietaire||'—')}</td>
+      <td class="mono">${p.creeLe?frDateHeure(p.creeLe):'—'}</td>
+      <td class="mono">${p.majLe?frDateHeure(p.majLe):'—'}</td>
+      <td class="adm-act">
+        <button onclick="ouvrirProjetServeur('${p.id}');fermerAdmin();">Ouvrir</button>
+        <button class="danger" onclick="supprimerProjetServeur('${p.id}').then(admProjets)">Supprimer</button>
+      </td>
+    </tr>`).join('');
+
+  document.getElementById('admBody').innerHTML = `
+    <h4>Tous les projets enregistrés</h4>
+    <table class="adm-table">
+      <tr><th>Projet</th><th>Propriétaire</th><th>Créé le</th><th>Modifié le</th><th></th></tr>
+      ${lignes || '<tr><td colspan="5" style="color:#8798AB;">Aucun projet enregistré.</td></tr>'}
+    </table>
+    <p class="adm-note">Un projet marqué <span class="pill valideur">équipe</span> est visible par tous les comptes&nbsp;; les autres ne le sont que par leur propriétaire, les valideurs et vous-même.</p>`;
+}
+
+/* ---------- Journal et état ---------- */
+async function admJournal(etatSeul){
+  let d;
+  try{ d = await api('logs', { limite:200 }); }
+  catch(e){ document.getElementById('admBody').innerHTML = '<p class="adm-warn">Serveur injoignable : '+escapeHtmlAttr(e.message)+'</p>'; return; }
+  if(!d || !d.ok){
+    document.getElementById('admBody').innerHTML = '<p class="adm-warn">'+escapeHtmlAttr((d && d.error) || 'Erreur.')+'</p>';
+    return;
+  }
+
+  if(etatSeul){
+    const e = d.etat || {};
+    const avertissement = e.persistant ? '' : `<p class="adm-warn">
+      <b>Aucun espace de stockage n'est configuré.</b> Les comptes et les projets
+      ne sont conservés que le temps où le serveur reste actif, et disparaissent ensuite.
+      Pour y remédier&nbsp;: sur Vercel, ouvrir le projet → onglet <b>Storage</b> →
+      installer <b>Upstash for Redis</b> (ou <b>Vercel Blob</b>) et le relier à ce projet,
+      puis redéployer. Les identifiants d'accès sont ajoutés automatiquement&nbsp;;
+      aucune clé n'est à écrire dans le code.</p>`;
+    document.getElementById('admBody').innerHTML = `
+      ${avertissement}
+      <h4>État du service</h4>
+      <div class="adm-stats">
+        <div class="adm-stat"><b>${e.utilisateurs||0}</b><span>compte(s)</span></div>
+        <div class="adm-stat"><b>${e.projets||0}</b><span>projet(s) enregistré(s)</span></div>
+        <div class="adm-stat"><b>${e.volumeKo||0} ko</b><span>volume des données</span></div>
+        <div class="adm-stat"><b>${e.persistant?'Oui':'Non'}</b><span>stockage durable</span></div>
+      </div>
+      <table class="adm-table" style="margin-top:14px;">
+        <tr><td style="width:45%;color:#5B6674;">Mode de stockage</td><td>${libelleStockage(e.stockage)}</td></tr>
+        <tr><td style="color:#5B6674;">Adresse de la plateforme</td><td class="mono">${escapeHtmlAttr(location.origin)}</td></tr>
+        <tr><td style="color:#5B6674;">Rédaction assistée</td><td>${SERVEUR_IA && SERVEUR_IA.disponible ? 'Disponible ('+(SERVEUR_IA.services||[]).join(', ')+')' : 'Aucune clé configurée sur le serveur'}</td></tr>
+        <tr><td style="color:#5B6674;">Installation sur l'appareil</td><td>${('serviceWorker' in navigator) ? 'Prise en charge par ce navigateur' : 'Non prise en charge par ce navigateur'}</td></tr>
+      </table>
+      <p class="adm-note">Les mots de passe sont conservés sous forme d'empreinte PBKDF2-SHA512
+      (210&nbsp;000 itérations, sel aléatoire par compte)&nbsp;; ils ne peuvent pas être relus,
+      y compris par l'administrateur. Les sessions expirent au bout de douze heures.</p>`;
+    return;
+  }
+
+  const lignes = (d.journal || []).map(l=>`<div class="log-row">
+      <span class="log-when">${frDateHeure(l.le)}</span>
+      <span class="log-who">${escapeHtmlAttr(l.qui||'—')}</span>
+      <span class="log-what">${escapeHtmlAttr(libelleAction(l.action))}${l.detail?' — '+escapeHtmlAttr(l.detail):''}</span>
+    </div>`).join('');
+
+  document.getElementById('admBody').innerHTML = `
+    <h4>Journal des actions — 200 dernières</h4>
+    <div class="log-list">${lignes || '<p class="adm-note">Aucune action enregistrée.</p>'}</div>
+    <p class="adm-note">Le journal retient qui a fait quoi et à quel moment&nbsp;: connexions,
+    créations et suppressions de comptes, ouvertures et enregistrements de projets.</p>`;
+}
+
+function libelleAction(a){
+  const t = {
+    'connexion':'Connexion', 'deconnexion':'Déconnexion',
+    'connexion.echec':'Échec de connexion', 'connexion.bloquee':'Connexion bloquée (trop d’essais)',
+    'connexion.inactif':'Connexion refusée (compte désactivé)',
+    'motdepasse.change':'Mot de passe modifié', 'motdepasse.echec':'Changement de mot de passe refusé',
+    'utilisateur.creation':'Compte créé', 'utilisateur.modification':'Compte modifié',
+    'utilisateur.suppression':'Compte supprimé', 'utilisateur.reinitialisation':'Mot de passe réinitialisé',
+    'projet.creation':'Projet créé', 'projet.enregistrement':'Projet enregistré',
+    'projet.ouverture':'Projet ouvert', 'projet.suppression':'Projet supprimé',
+    'projet.renommage':'Projet renommé', 'projet.partage':'Partage modifié'
+  };
+  return t[a] || a;
+}
+
+/* ============================================================
+   INSTALLATION DE L'APPLICATION
+   ============================================================ */
+
+let INVITE_INSTALL = null;
+
+function enregistrerServiceWorker(){
+  if(!('serviceWorker' in navigator) || !surServeur()) return;
+  navigator.serviceWorker.register('/service-worker.js').catch(()=>{ /* sans incidence */ });
+}
+
+function preparerInstallation(){
+  const btn = document.getElementById('installBtn');
+  if(!btn || !surServeur()) return;
+
+  /* Déjà installée : rien à proposer. */
+  if(window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) return;
+
+  window.addEventListener('beforeinstallprompt', e=>{
+    e.preventDefault();
+    INVITE_INSTALL = e;
+    btn.classList.add('on');
+  });
+
+  window.addEventListener('appinstalled', ()=>{
+    INVITE_INSTALL = null;
+    btn.classList.remove('on');
+    toast('Application installée. Vous la retrouverez parmi vos applications.');
+  });
+
+  /* iPhone et iPad : pas d'invitation automatique, on explique la marche à suivre. */
+  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if(iOS){ btn.classList.add('on'); }
+}
+
+async function installerApplication(){
+  if(INVITE_INSTALL){
+    INVITE_INSTALL.prompt();
+    try{ await INVITE_INSTALL.userChoice; }catch(e){}
+    INVITE_INSTALL = null;
+    document.getElementById('installBtn').classList.remove('on');
+    return;
+  }
+  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if(iOS){
+    alert('Pour installer l’application sur cet appareil :\n\n'
+      + '1. Appuyez sur le bouton Partager, en bas de Safari\n'
+      + '2. Choisissez « Sur l’écran d’accueil »\n'
+      + '3. Appuyez sur « Ajouter »\n\n'
+      + 'L’application apparaîtra alors comme une application ordinaire.');
+    return;
+  }
+  alert('Pour installer l’application :\n\n'
+    + '• Sur ordinateur (Chrome, Edge) : cliquez sur l’icône d’installation, à droite de la barre d’adresse\n'
+    + '• Sur Android : menu ⋮ du navigateur → « Installer l’application »\n\n'
+    + 'Elle s’ouvrira ensuite dans sa propre fenêtre, sans barre d’adresse.');
 }
 
 /* ============================================================ */

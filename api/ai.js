@@ -11,6 +11,8 @@
      OPENAI_API_KEY    (payant)
    ============================================================ */
 
+import { utilisateurCourant, rang } from './_lib/auth.js';
+
 const SERVICES = {
   groq: {
     env: 'GROQ_API_KEY',
@@ -65,6 +67,24 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ ok: false, error: 'Méthode non autorisée.' });
+  }
+
+  /* La rédaction assistée consomme la clé du laboratoire : elle est
+     réservée aux comptes connectés ayant au moins le niveau rédacteur. */
+  const demandeur = await utilisateurCourant(req);
+  if (!demandeur) {
+    return res.status(401).json({
+      ok: false,
+      error: 'Connectez-vous pour utiliser la rédaction assistée.',
+      code: 'NONCONNECTE'
+    });
+  }
+  if (rang(demandeur.niveau) < rang('redacteur')) {
+    return res.status(403).json({
+      ok: false,
+      error: 'Votre niveau d’accès ne permet pas la rédaction assistée.',
+      code: 'INTERDIT'
+    });
   }
 
   try {
